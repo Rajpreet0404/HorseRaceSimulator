@@ -133,14 +133,6 @@ public class Race
 
         Race race1 = new Race(raceLength);
 
-        // Horse horse1 = new Horse('♞',"PIPPI LONGSTOCKING",0.6);
-        // Horse horse2 = new Horse('♞',"KOKOMO",0.5);
-        // Horse horse3 = new Horse('♞',"EL JEFE",0.4);
-
-        // race1.addHorse(horse1,1);
-        // race1.addHorse(horse2,2);
-        // race1.addHorse(horse3,3);
-
         // Button action listners
 
         //Start race button action listner
@@ -163,6 +155,7 @@ public class Race
             }
         });
 
+        // Opens the edit race window and hides the main menu, allowing the user to configure the race
         editRaceButton.addActionListener(new ActionListener() 
         {
             @Override
