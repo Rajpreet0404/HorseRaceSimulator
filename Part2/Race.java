@@ -635,7 +635,9 @@ public class Race
         // Create a menu bar for the Start race window
         JMenuBar mainMenuBar = new JMenuBar();
         JMenu menu = new JMenu("Menu");
+        JMenu statsMenu = new JMenu("Statistics");
         mainMenuBar.add(menu);
+        mainMenuBar.add(statsMenu);
 
         JMenuItem menuItem = new JMenuItem("Main Menu");
         menuItem.addActionListener(new ActionListener() {
@@ -646,6 +648,15 @@ public class Race
             }
         });
         menu.add(menuItem);
+
+        JMenuItem statsItem = new JMenuItem("View Statistics");
+        statsItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                raceFrame.setVisible(false);
+            }
+        });
+        statsMenu.add(statsItem);
 
         raceFrame.setJMenuBar(mainMenuBar);
         raceFrame.setVisible(true);
