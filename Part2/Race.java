@@ -598,8 +598,10 @@ public class Race
      */
     public void startRaceGUI(JFrame mainFrame)
     {
+        // Hide the main menu window
         mainFrame.setVisible(false);
 
+        // Create a new frame for the race to be displayed
         JFrame raceFrame = new JFrame();
         raceFrame.setTitle("Race");
         raceFrame.setSize(900, 250);
@@ -607,6 +609,7 @@ public class Race
         raceFrame.setLayout(new FlowLayout());
         raceFrame.getContentPane().setBackground(new Color(54, 135, 73));
 
+        // Create a text area to display the race
         JTextArea textArea = new JTextArea();
         textArea.setFont(new Font("monospaced", Font.PLAIN, 20));
         textArea.setRows(5);
@@ -617,13 +620,13 @@ public class Race
 
         raceFrame.add(textArea);
 
-        //raceFrame.setResizable(false);
-
+        // Create a menu bar for the Start race window
         JMenuBar mainMenuBar = new JMenuBar();
         JMenu menu = new JMenu("Menu");
         mainMenuBar.add(menu);
 
         JMenuItem menuItem = new JMenuItem("Main Menu");
+        // Sets the menu bar to visible once the race is over 
         menuItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
