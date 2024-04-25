@@ -372,8 +372,6 @@ public class Race
         symbolComboBox1.addItem("♔");
         symbolComboBox1.addItem("♥");
 
-        //symbolComboBox1.setFont(new java.awt.Font("Arial", java.awt.Font.PLAIN, 15));
-
         // Entry field to allow the user to enter the character icon 
         JComboBox<String> symbolComboBox2 = new JComboBox<>();
         symbolComboBox2.addItem("♘");
@@ -391,8 +389,6 @@ public class Race
         symbolComboBox2.addItem("♔");
         symbolComboBox2.addItem("♥");
 
-        //symbolComboBox2.setFont(new java.awt.Font("Arial", java.awt.Font.PLAIN, 15));
-
         // Entry field to allow the user to enter the character icon 
         JComboBox<String> symbolComboBox3 = new JComboBox<>();
         symbolComboBox3.addItem("♘");
@@ -409,8 +405,6 @@ public class Race
         symbolComboBox3.addItem("♕");
         symbolComboBox3.addItem("♔");
         symbolComboBox3.addItem("♥");
-
-        //symbolComboBox3.setFont(new java.awt.Font("Arial", java.awt.Font.PLAIN, 15));
         
         JPanel horsesPanel = new JPanel(new GridLayout(14,2));
         horsesPanel.setBackground(new Color(54, 135, 73));
@@ -559,6 +553,101 @@ public class Race
 
     }
 
+    // Method to display the statistics of each horse
+    public void statsFrame(JFrame mainFrame)
+    {
+        // Create a new frame for the statistics to be displayed
+        JFrame statsFrame = new JFrame();
+        statsFrame.setTitle("View Statistics");
+        
+        statsFrame.setSize(750, 500);
+        statsFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        statsFrame.setLayout(new FlowLayout());
+        statsFrame.getContentPane().setBackground(new Color(54, 135, 73));
+        statsFrame.setResizable(false);
+
+        // Create a menu bar for the Start race window
+        JMenuBar mainMenuBar = new JMenuBar();
+        JMenu menu = new JMenu("Menu");
+        JMenu statsMenu = new JMenu("Statistics");
+        mainMenuBar.add(menu);
+        mainMenuBar.add(statsMenu);
+
+        JMenuItem menuItem = new JMenuItem("Main Menu");
+        menuItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                statsFrame.setVisible(false);
+                mainFrame.setVisible(true);
+            }
+        });
+        menu.add(menuItem);
+
+        JMenuItem statsItem = new JMenuItem("View Statistics");
+        statsItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            }
+        });
+        statsMenu.add(statsItem);
+
+        // Allows the user to enter the track length 
+        JTextField chooseHorseLabel = new JTextField("Choose a horse to view its statistics:",25);
+        chooseHorseLabel.setBackground(Color.WHITE);
+        chooseHorseLabel.setForeground(new Color(35, 158, 152));
+        chooseHorseLabel.setFont(new Font("Arial", Font.BOLD, 17));
+        chooseHorseLabel.setVisible(true);
+        chooseHorseLabel.setEditable(false);
+        chooseHorseLabel.setHorizontalAlignment(JTextField.CENTER);
+
+        // Entry field to allow the user to enter the character icon 
+        JComboBox<String> horseNames = new JComboBox<>();
+        if(lane1Horse != null)
+        {
+            horseNames.addItem(lane1Horse.getName());
+        }
+        if(lane2Horse != null)
+        {
+            horseNames.addItem(lane2Horse.getName());
+        }
+        if(lane3Horse != null)
+        {
+            horseNames.addItem(lane3Horse.getName());
+        }
+
+        // Allows the user to submit the track length that they have entered
+        JButton submitButton = new JButton("Submit");
+        submitButton.setFont(new Font("Arial", Font.BOLD, 13));
+        submitButton.setBackground(new Color(35, 158, 152));
+        submitButton.setForeground(Color.WHITE);
+        submitButton.setVisible(true);
+
+        submitButton.addActionListener(new ActionListener() 
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                String input = (String) horseNames.getSelectedItem();
+                // Try catch block used to check whther the input for the race length is a valid integer
+                if(input.equals(""))
+                {
+                    JOptionPane.showMessageDialog(null, "Please select a horse to view its statistics.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+                else
+                {
+                }
+            }
+        });
+
+        statsFrame.setJMenuBar(mainMenuBar);
+
+        statsFrame.add(chooseHorseLabel);
+        statsFrame.add(horseNames);
+        statsFrame.add(submitButton);
+        statsFrame.setVisible(true);
+        
+    }
+
     /**
      * Generates a random number between 0 and 1 (not inclusive) and rounds it to 1 decimal place.
      */
@@ -654,6 +743,7 @@ public class Race
             @Override
             public void actionPerformed(ActionEvent e) {
                 raceFrame.setVisible(false);
+                statsFrame(mainFrame);
             }
         });
         statsMenu.add(statsItem);
@@ -686,18 +776,30 @@ public class Race
         {
             lane1Horse.goBackToStart();
             lane1Horse.setHasFallen(false);
+
+            int racesCompeted = lane1Horse.getTotalRaces();
+            racesCompeted++;
+            lane1Horse.setTotalRaces(racesCompeted);
         }
 
         if(lane2Horse != null)
         {
             lane2Horse.goBackToStart();
             lane2Horse.setHasFallen(false);
+
+            int racesCompeted = lane2Horse.getTotalRaces();
+            racesCompeted++;
+            lane2Horse.setTotalRaces(racesCompeted);
         }
 
         if(lane3Horse != null)
         {
             lane3Horse.goBackToStart();
             lane3Horse.setHasFallen(false);
+
+            int racesCompeted = lane3Horse.getTotalRaces();
+            racesCompeted++;
+            lane3Horse.setTotalRaces(racesCompeted);
         }
                     
         while (!finished)
@@ -724,8 +826,12 @@ public class Race
             //if any of the three horses has won the race is finished
             if ( raceWonBy(lane1Horse) ) 
             {
+                int racesWon = lane1Horse.getRacesWon();
+                racesWon++;
+                lane1Horse.setRacesWon(racesWon);
+
                 double confidence = lane1Horse.getConfidence();
-                if (confidence == 0.9 || confidence == 0.1)
+                if (confidence == 0.9)
                 {
                 }
                 else
@@ -744,8 +850,12 @@ public class Race
             }
             else if( raceWonBy(lane2Horse) )
             {
+                int racesWon = lane2Horse.getRacesWon();
+                racesWon++;
+                lane2Horse.setRacesWon(racesWon);
+
                 double confidence = lane2Horse.getConfidence();
-                if (confidence == 0.9 || confidence == 0.1)
+                if (confidence == 0.9)
                 {
                 }
                 else
@@ -764,8 +874,12 @@ public class Race
             }
             else if( raceWonBy(lane3Horse) )
             {
+                int racesWon = lane3Horse.getRacesWon();
+                racesWon++;
+                lane3Horse.setRacesWon(racesWon);
+
                 double confidence = lane3Horse.getConfidence();
-                if (confidence == 0.9 || confidence == 0.1)
+                if (confidence == 0.9)
                 {
                 }
                 else
@@ -851,9 +965,16 @@ public class Race
             {
                 theHorse.fall();
                 double confidence = theHorse.getConfidence();
-                confidence = confidence - 0.1;
-                confidence = Math.round(confidence * 10.0) / 10.0; // Round to 1 decimal place
-                theHorse.setConfidence(confidence);
+                if(confidence == 0.1)
+                {
+
+                }
+                else
+                {
+                    confidence = confidence - 0.1;
+                    confidence = Math.round(confidence * 10.0) / 10.0; // Round to 1 decimal place
+                    theHorse.setConfidence(confidence);
+                }
             }
         }
     }
