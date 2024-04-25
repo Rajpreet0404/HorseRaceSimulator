@@ -65,6 +65,7 @@ public class Race
         menu.add(menuItem);
         mainFrame.setJMenuBar(mainMenuBar);
 
+        // Green background used to represent grass
         JTextField welcomeTextField = new JTextField("Welcome to the Horse Race Simulation!",30);
         welcomeTextField.setBackground(new Color(54, 135, 73));
         welcomeTextField.setForeground(Color.WHITE);
