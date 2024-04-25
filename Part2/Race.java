@@ -176,7 +176,7 @@ public class Race
         // Opens a new frame for the 'Edit Race' window
         JFrame editRaceFrame = new JFrame();
         editRaceFrame.setTitle("Edit Race");
-        editRaceFrame.setSize(750, 500);
+        editRaceFrame.setSize(800, 500);
         editRaceFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         editRaceFrame.setLayout(new FlowLayout());
         editRaceFrame.getContentPane().setBackground(new Color(54, 135, 73));
