@@ -299,21 +299,13 @@ public class Race
         horse1NameEntry.setVisible(true);
         horse1NameEntry.setHorizontalAlignment(JTextField.CENTER);
 
-        JTextField horse1CharLabel = new JTextField("Enter a single character to represent Horse 1:",25);
+        JTextField horse1CharLabel = new JTextField("Select a symbol to represent Horse 1:",27);
         horse1CharLabel.setBackground(new Color(54, 135, 73));
         horse1CharLabel.setForeground(Color.WHITE);
         horse1CharLabel.setFont(new Font("Arial", Font.BOLD, 15));
         horse1CharLabel.setVisible(true);
         horse1CharLabel.setEditable(false);
         horse1CharLabel.setHorizontalAlignment(JTextField.CENTER);
-
-        // Entry field to allow the user to enter the character icon of the first horse
-        JTextField horse1CharEntry = new JTextField(10);
-        horse1CharEntry.setBackground(Color.WHITE);
-        horse1CharEntry.setForeground(Color.BLACK);
-        horse1CharEntry.setFont(new Font("Arial", Font.BOLD, 15));
-        horse1CharEntry.setVisible(true);
-        horse1CharEntry.setHorizontalAlignment(JTextField.CENTER);
 
         JTextField horse2NameLabel = new JTextField("Enter a name for Horse 2:",15);
         horse2NameLabel.setBackground(new Color(54, 135, 73));
@@ -331,21 +323,13 @@ public class Race
         horse2NameEntry.setVisible(true);
         horse2NameEntry.setHorizontalAlignment(JTextField.CENTER);
 
-        JTextField horse2CharLabel = new JTextField("Enter a single character to represent Horse 2:",25);
+        JTextField horse2CharLabel = new JTextField("Select a symbol to represent Horse 2:",27);
         horse2CharLabel.setBackground(new Color(54, 135, 73));
         horse2CharLabel.setForeground(Color.WHITE);
         horse2CharLabel.setFont(new Font("Arial", Font.BOLD, 15));
         horse2CharLabel.setVisible(true);
         horse2CharLabel.setEditable(false);
         horse2CharLabel.setHorizontalAlignment(JTextField.CENTER);
-
-        // Entry field to allow the user to enter the character icon of the second horse
-        JTextField horse2CharEntry = new JTextField(10);
-        horse2CharEntry.setBackground(Color.WHITE);
-        horse2CharEntry.setForeground(Color.BLACK);
-        horse2CharEntry.setFont(new Font("Arial", Font.BOLD, 15));
-        horse2CharEntry.setVisible(true);
-        horse2CharEntry.setHorizontalAlignment(JTextField.CENTER);
 
         JTextField horse3NameLabel = new JTextField("Enter a name for Horse 3:",15);
         horse3NameLabel.setBackground(new Color(54, 135, 73));
@@ -363,7 +347,7 @@ public class Race
         horse3NameEntry.setVisible(true);
         horse3NameEntry.setHorizontalAlignment(JTextField.CENTER);
 
-        JTextField horse3CharLabel = new JTextField("Enter a single character to represent Horse 3:",25);
+        JTextField horse3CharLabel = new JTextField("Select a symbol to represent Horse 3:",27);
         horse3CharLabel.setBackground(new Color(54, 135, 73));
         horse3CharLabel.setForeground(Color.WHITE);
         horse3CharLabel.setFont(new Font("Arial", Font.BOLD, 15));
@@ -371,14 +355,57 @@ public class Race
         horse3CharLabel.setEditable(false);
         horse3CharLabel.setHorizontalAlignment(JTextField.CENTER);
 
-        // Entry field to allow the user to enter the character icon of the third horse
-        JTextField horse3CharEntry = new JTextField(10);
-        horse3CharEntry.setBackground(Color.WHITE);
-        horse3CharEntry.setForeground(Color.BLACK);
-        horse3CharEntry.setFont(new Font("Arial", Font.BOLD, 15));
-        horse3CharEntry.setVisible(true);
-        horse3CharEntry.setHorizontalAlignment(JTextField.CENTER);
+        // Entry field to allow the user to enter the character icon 
+        JComboBox<String> symbolComboBox1 = new JComboBox<>();
+        symbolComboBox1.addItem("🐎");
+        symbolComboBox1.addItem("🐴");
+        symbolComboBox1.addItem("🦄");
+        symbolComboBox1.addItem("🐇");
+        symbolComboBox1.addItem("🐢");
+        symbolComboBox1.addItem("🐘");
+        symbolComboBox1.addItem("🐒");
+        symbolComboBox1.addItem("🐼");
+        symbolComboBox1.addItem("🐧");
+        symbolComboBox1.addItem("🐬");
+        symbolComboBox1.addItem("🦜");
+        symbolComboBox1.addItem("🦢");
+        symbolComboBox1.addItem("🦚");
+        symbolComboBox1.addItem("🦥");
 
+        // Entry field to allow the user to enter the character icon 
+        JComboBox<String> symbolComboBox2 = new JComboBox<>();
+        symbolComboBox2.addItem("🐎");
+        symbolComboBox2.addItem("🐴");
+        symbolComboBox2.addItem("🦄");
+        symbolComboBox2.addItem("🐇");
+        symbolComboBox2.addItem("🐢");
+        symbolComboBox2.addItem("🐘");
+        symbolComboBox2.addItem("🐒");
+        symbolComboBox2.addItem("🐼");
+        symbolComboBox2.addItem("🐧");
+        symbolComboBox2.addItem("🐬");
+        symbolComboBox2.addItem("🦜");
+        symbolComboBox2.addItem("🦢");
+        symbolComboBox2.addItem("🦚");
+        symbolComboBox2.addItem("🦥");
+
+        // Entry field to allow the user to enter the character icon 
+        JComboBox<String> symbolComboBox3 = new JComboBox<>();
+        symbolComboBox3.addItem("🐎");
+        symbolComboBox3.addItem("🐴");
+        symbolComboBox3.addItem("🦄");
+        symbolComboBox3.addItem("🐇");
+        symbolComboBox3.addItem("🐢");
+        symbolComboBox3.addItem("🐘");
+        symbolComboBox3.addItem("🐒");
+        symbolComboBox3.addItem("🐼");
+        symbolComboBox3.addItem("🐧");
+        symbolComboBox3.addItem("🐬");
+        symbolComboBox3.addItem("🦜");
+        symbolComboBox3.addItem("🦢");
+        symbolComboBox3.addItem("🦚");
+        symbolComboBox3.addItem("🦥");
+        
         JPanel horsesPanel = new JPanel(new GridLayout(9,2));
         horsesPanel.setBackground(new Color(54, 135, 73));
 
@@ -389,19 +416,19 @@ public class Race
         horsesPanel.add(horse1NameLabel);
         horsesPanel.add(horse1NameEntry);
         horsesPanel.add(horse1CharLabel);
-        horsesPanel.add(horse1CharEntry);
+        horsesPanel.add(symbolComboBox1);
         horsesPanel.add(new JLabel()); // Empty label
         horsesPanel.add(addHorse1Button);
         horsesPanel.add(horse2NameLabel);
         horsesPanel.add(horse2NameEntry);
         horsesPanel.add(horse2CharLabel);
-        horsesPanel.add(horse2CharEntry);
+        horsesPanel.add(symbolComboBox2);
         horsesPanel.add(new JLabel()); // Empty label
         horsesPanel.add(addHorse2Button);
         horsesPanel.add(horse3NameLabel);
         horsesPanel.add(horse3NameEntry);
         horsesPanel.add(horse3CharLabel);
-        horsesPanel.add(horse3CharEntry);
+        horsesPanel.add(symbolComboBox3);
         horsesPanel.add(new JLabel()); // Empty label
         horsesPanel.add(addHorse3Button);
 
@@ -419,29 +446,19 @@ public class Race
             public void actionPerformed(ActionEvent e)
             {
                 String horse1Name = horse1NameEntry.getText();
-                String horse1Char = horse1CharEntry.getText();
+                String horse1Char = (String) symbolComboBox1.getSelectedItem();
 
                 // Checks if the entry fields are empty
                 if(horse1Name.equals("") || horse1Char.equals(""))
                 {
                     JOptionPane.showMessageDialog(null, "Please enter a name and a character for Horse 1.", "Error", JOptionPane.ERROR_MESSAGE);
                     horse1NameEntry.setText("");
-                    horse1CharEntry.setText("");
-                }
-                // Ensures that characters like emojis (surrogate pairs) can be entered whilst other text is 
-                // restricted to a single character
-                else if(horse1Char.codePointCount(0, horse1Char.length()) > 1)
-                {
-                    JOptionPane.showMessageDialog(null, "Please enter a single character for Horse 1.", "Error", JOptionPane.ERROR_MESSAGE);
-                    horse1NameEntry.setText("");
-                    horse1CharEntry.setText("");
                 }
                 // Checks the length of the horse name is greater than 15 characters
                 else if(horse1Name.length() > 15)
                 {
                     JOptionPane.showMessageDialog(null, "Please enter a name with less than 15 characters for Horse 1.", "Error", JOptionPane.ERROR_MESSAGE);
                     horse1NameEntry.setText("");
-                    horse1CharEntry.setText("");
                 }
                 else
                 {
@@ -452,7 +469,6 @@ public class Race
                     addHorse(horse1,1);
                     JOptionPane.showMessageDialog(null, "Horse 1 added successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
                     horse1NameEntry.setText("");
-                    horse1CharEntry.setText("");
                 }   
             }
         });
@@ -464,29 +480,19 @@ public class Race
             public void actionPerformed(ActionEvent e)
             {
                 String horse2Name = horse2NameEntry.getText();
-                String horse2Char = horse2CharEntry.getText();
+                String horse2Char = (String) symbolComboBox2.getSelectedItem();
 
                 // Checks if the entry fields are empty
                 if(horse2Name.equals("") || horse2Char.equals(""))
                 {
                     JOptionPane.showMessageDialog(null, "Please enter a name and a character for Horse 2.", "Error", JOptionPane.ERROR_MESSAGE);
                     horse2NameEntry.setText("");
-                    horse2CharEntry.setText("");
-                }
-                // Ensures that characters like emojis (surrogate pairs) can be entered whilst other text is 
-                // restricted to a single character
-                else if(horse2Char.codePointCount(0, horse2Char.length()) > 1)
-                {
-                    JOptionPane.showMessageDialog(null, "Please enter a single character for Horse 2.", "Error", JOptionPane.ERROR_MESSAGE);
-                    horse2NameEntry.setText("");
-                    horse2CharEntry.setText("");
                 }
                 // Checks the length of the horse name is greater than 15 characters
                 else if(horse2Name.length() > 15)
                 {
                     JOptionPane.showMessageDialog(null, "Please enter a name with less than 15 characters for Horse 2.", "Error", JOptionPane.ERROR_MESSAGE);
                     horse2NameEntry.setText("");
-                    horse2CharEntry.setText("");
                 }
                 else
                 {
@@ -497,7 +503,6 @@ public class Race
                     addHorse(horse2,2);
                     JOptionPane.showMessageDialog(null, "Horse 2 added successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
                     horse2NameEntry.setText("");
-                    horse2CharEntry.setText("");
                 }   
             }
         });
@@ -509,29 +514,19 @@ public class Race
             public void actionPerformed(ActionEvent e)
             {
                 String horse3Name = horse3NameEntry.getText();
-                String horse3Char = horse3CharEntry.getText();
+                String horse3Char = (String) symbolComboBox3.getSelectedItem();
 
                 // Checks if the entry fields are empty
                 if(horse3Name.equals("") || horse3Char.equals(""))
                 {
                     JOptionPane.showMessageDialog(null, "Please enter a name and a character for Horse 3.", "Error", JOptionPane.ERROR_MESSAGE);
                     horse3NameEntry.setText("");
-                    horse3CharEntry.setText("");
-                }
-                // Ensures that characters like emojis (surrogate pairs) can be entered whilst other text is 
-                // restricted to a single character
-                else if(horse3Char.codePointCount(0, horse3Char.length()) > 1)
-                {
-                    JOptionPane.showMessageDialog(null, "Please enter a single character for Horse 3.", "Error", JOptionPane.ERROR_MESSAGE);
-                    horse3NameEntry.setText("");
-                    horse3CharEntry.setText("");
                 }
                 // Checks the length of the horse name is greater than 15 characters
                 else if(horse3Name.length() > 15)
                 {
                     JOptionPane.showMessageDialog(null, "Please enter a name with less than 15 characters for Horse 3.", "Error", JOptionPane.ERROR_MESSAGE);
                     horse3NameEntry.setText("");
-                    horse3CharEntry.setText("");
                 }
                 else
                 {
@@ -542,7 +537,6 @@ public class Race
                     addHorse(horse3,3);
                     JOptionPane.showMessageDialog(null, "Horse 3 added successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
                     horse3NameEntry.setText("");
-                    horse3CharEntry.setText("");
                 }   
             }
         });
