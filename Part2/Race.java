@@ -412,7 +412,7 @@ public class Race
 
         //symbolComboBox3.setFont(new java.awt.Font("Arial", java.awt.Font.PLAIN, 15));
         
-        JPanel horsesPanel = new JPanel(new GridLayout(9,2));
+        JPanel horsesPanel = new JPanel(new GridLayout(14,2));
         horsesPanel.setBackground(new Color(54, 135, 73));
 
         editPanel.add(raceLenLabel);
@@ -424,17 +424,27 @@ public class Race
         horsesPanel.add(horse1CharLabel);
         horsesPanel.add(symbolComboBox1);
         horsesPanel.add(new JLabel()); // Empty label
+        horsesPanel.add(new JLabel()); // Empty label
+        horsesPanel.add(new JLabel()); // Empty label
         horsesPanel.add(addHorse1Button);
+        horsesPanel.add(new JLabel()); // Empty label
+        horsesPanel.add(new JLabel()); // Empty label
         horsesPanel.add(horse2NameLabel);
         horsesPanel.add(horse2NameEntry);
         horsesPanel.add(horse2CharLabel);
         horsesPanel.add(symbolComboBox2);
         horsesPanel.add(new JLabel()); // Empty label
+        horsesPanel.add(new JLabel()); // Empty label
+        horsesPanel.add(new JLabel()); // Empty label
         horsesPanel.add(addHorse2Button);
+        horsesPanel.add(new JLabel()); // Empty label
+        horsesPanel.add(new JLabel()); // Empty label
         horsesPanel.add(horse3NameLabel);
         horsesPanel.add(horse3NameEntry);
         horsesPanel.add(horse3CharLabel);
         horsesPanel.add(symbolComboBox3);
+        horsesPanel.add(new JLabel()); // Empty label
+        horsesPanel.add(new JLabel()); // Empty label
         horsesPanel.add(new JLabel()); // Empty label
         horsesPanel.add(addHorse3Button);
 
@@ -608,6 +618,8 @@ public class Race
         raceFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         raceFrame.setLayout(new FlowLayout());
         raceFrame.getContentPane().setBackground(new Color(54, 135, 73));
+
+        raceFrame.setResizable(false);
 
         // Create a text area to display the race
         JTextArea textArea = new JTextArea();
