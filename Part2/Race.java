@@ -626,7 +626,6 @@ public class Race
         mainMenuBar.add(menu);
 
         JMenuItem menuItem = new JMenuItem("Main Menu");
-        // Sets the menu bar to visible once the race is over 
         menuItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -639,6 +638,7 @@ public class Race
         raceFrame.setJMenuBar(mainMenuBar);
         raceFrame.setVisible(true);
         
+        // Sets the menu bar to visible once the race is over 
         mainMenuBar.setVisible(false);
         race(textArea);
         mainMenuBar.setVisible(true);
