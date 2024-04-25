@@ -95,8 +95,6 @@ public class Race
         instructionTextArea.append("\n\n");
         instructionTextArea.append("Good luck and have fun!");
 
-
-
         // Create a panel on the main frame 
         JPanel mainPanel = new JPanel(new FlowLayout());
         mainPanel.setBackground(new Color(54, 135, 73)); 
@@ -112,16 +110,15 @@ public class Race
         startRaceButton.setVisible(true);
         startRaceButton.setEnabled(false);
         // Set the preferred size of the button
-        //startRaceButton.setPreferredSize(new Dimension(125, 25));
 
         // Add an 'Edit Race' button to the mainPanel
+        // Blue background used on buttons to represent the sky
         JButton editRaceButton = new JButton("Edit race");
         editRaceButton.setFont(new Font("Arial", Font.BOLD, 20));
         editRaceButton.setBackground(new Color(35, 158, 152));
         editRaceButton.setForeground(Color.WHITE);
         editRaceButton.setVisible(true);
         // Set the preferred size of the button
-        //editRaceButton.setPreferredSize(new Dimension(125, 25));
 
         textPanel.add(instructionTextArea);
 
