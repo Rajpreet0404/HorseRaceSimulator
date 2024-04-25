@@ -147,7 +147,7 @@ public class Race
                     @Override
                     protected Void doInBackground() throws Exception 
                     {
-                        race1.startRaceGUI(mainFrame); // Call the startRaceGUI method on the instance
+                        race1.startRaceGUI(mainFrame, race1); // Call the startRaceGUI method on the instance
                         return null;
                     }
                 };
@@ -560,7 +560,7 @@ public class Race
         JFrame statsFrame = new JFrame();
         statsFrame.setTitle("View Statistics");
         
-        statsFrame.setSize(750, 500);
+        statsFrame.setSize(750, 400);
         statsFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         statsFrame.setLayout(new GridLayout(4,1));
         statsFrame.getContentPane().setBackground(new Color(54, 135, 73));
@@ -677,14 +677,21 @@ public class Race
                         // Get the horse symbol and set it as the text of horseIcon
                         horseIcon.setText(String.valueOf(selectedHorse.getSymbol()));
 
-                        double ratio = selectedHorse.getRacesWon() / selectedHorse.getTotalRaces();
-                        double odds = Math.round(ratio * 10) / 10.0;
-
                         horseStatsArea.setText("Name: " + selectedHorse.getName());
                         horseStatsArea.append("\n");
                         horseStatsArea.append("Win ratio - " + selectedHorse.getRacesWon() + " : " + selectedHorse.getTotalRaces());
                         horseStatsArea.append("\n");
-                        horseStatsArea.append("Odds: " + odds +"% chance of winning");
+                        int racesWon = selectedHorse.getRacesWon();
+                        if(racesWon == 0)
+                        {
+                            horseStatsArea.append("Odds: 0% chance of winning");
+                        }
+                        else
+                        {
+                            double ratio = (double) selectedHorse.getRacesWon() / selectedHorse.getTotalRaces();
+                            double odds = Math.round(ratio * 1000) / 10.0; // Multiply by 1000 and divide by 10 to get one decimal place
+                            horseStatsArea.append("Odds: " + odds +"% chance of winning");
+                        }
 
                         chosenHorseStatsPanel.add(horseIcon);
                         chosenHorseStatsPanel.add(horseStatsArea);
@@ -763,7 +770,7 @@ public class Race
      * then repeatedly moved forward until the 
      * race is finished
      */
-    public void startRaceGUI(JFrame mainFrame)
+    public void startRaceGUI(JFrame mainFrame, Race race1)
     {
         // Hide the main menu window
         mainFrame.setVisible(false);
@@ -787,6 +794,36 @@ public class Race
         textArea.setEditable(false);
         textArea.setVisible(true);
 
+        // Add a 'Start Race' button to the mainPanel
+        JButton startRaceButton = new JButton("Start next race");
+        startRaceButton.setFont(new Font("Arial", Font.BOLD, 20));
+        startRaceButton.setBackground(new Color(35, 158, 152));
+        startRaceButton.setForeground(Color.WHITE);
+        startRaceButton.setVisible(true);
+        startRaceButton.setEnabled(false);
+
+        //Start race button action listner
+        startRaceButton.addActionListener(new ActionListener() 
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                // Executes the race on the event dispatch thread (EDT) so the GUI remains responsive
+                SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>() 
+                {
+                    @Override
+                    protected Void doInBackground() throws Exception 
+                    {
+                        raceFrame.setVisible(false);
+                        race1.startRaceGUI(mainFrame, race1); // Call the startRaceGUI method on the instance
+                        return null;
+                    }
+                };
+                worker.execute();
+            }
+        });
+
+        raceFrame.add(startRaceButton);
         raceFrame.add(textArea);
 
         // Create a menu bar for the Start race window
@@ -821,8 +858,11 @@ public class Race
         
         // Sets the menu bar to visible once the race is over 
         mainMenuBar.setVisible(false);
+        startRaceButton.setVisible(false);
         race(textArea);
         mainMenuBar.setVisible(true);
+        startRaceButton.setVisible(true);
+        startRaceButton.setEnabled(true);
         
     }
 
