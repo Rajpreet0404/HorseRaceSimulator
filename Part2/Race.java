@@ -65,7 +65,7 @@ public class Race
         menu.add(menuItem);
         mainFrame.setJMenuBar(mainMenuBar);
 
-        // Green background used to represent grass
+        // Green background used to represent grass on the racetrack
         JTextField welcomeTextField = new JTextField("Welcome to the Horse Race Simulation!",30);
         welcomeTextField.setBackground(new Color(54, 135, 73));
         welcomeTextField.setForeground(Color.WHITE);
@@ -357,54 +357,60 @@ public class Race
 
         // Entry field to allow the user to enter the character icon 
         JComboBox<String> symbolComboBox1 = new JComboBox<>();
-        symbolComboBox1.addItem("🐎");
-        symbolComboBox1.addItem("🐴");
-        symbolComboBox1.addItem("🦄");
-        symbolComboBox1.addItem("🐇");
-        symbolComboBox1.addItem("🐢");
-        symbolComboBox1.addItem("🐘");
-        symbolComboBox1.addItem("🐒");
-        symbolComboBox1.addItem("🐼");
-        symbolComboBox1.addItem("🐧");
-        symbolComboBox1.addItem("🐬");
-        symbolComboBox1.addItem("🦜");
-        symbolComboBox1.addItem("🦢");
-        symbolComboBox1.addItem("🦚");
-        symbolComboBox1.addItem("🦥");
+        symbolComboBox1.addItem("♘");
+        symbolComboBox1.addItem("♞");
+        symbolComboBox1.addItem("☀");
+        symbolComboBox1.addItem("☁");
+        symbolComboBox1.addItem("☂");
+        symbolComboBox1.addItem("☃");
+        symbolComboBox1.addItem("★");
+        symbolComboBox1.addItem("☆");
+        symbolComboBox1.addItem("☺");
+        symbolComboBox1.addItem("☻");
+        symbolComboBox1.addItem("☹");
+        symbolComboBox1.addItem("♕");
+        symbolComboBox1.addItem("♔");
+        symbolComboBox1.addItem("♥");
+
+        //symbolComboBox1.setFont(new java.awt.Font("Arial", java.awt.Font.PLAIN, 15));
 
         // Entry field to allow the user to enter the character icon 
         JComboBox<String> symbolComboBox2 = new JComboBox<>();
-        symbolComboBox2.addItem("🐎");
-        symbolComboBox2.addItem("🐴");
-        symbolComboBox2.addItem("🦄");
-        symbolComboBox2.addItem("🐇");
-        symbolComboBox2.addItem("🐢");
-        symbolComboBox2.addItem("🐘");
-        symbolComboBox2.addItem("🐒");
-        symbolComboBox2.addItem("🐼");
-        symbolComboBox2.addItem("🐧");
-        symbolComboBox2.addItem("🐬");
-        symbolComboBox2.addItem("🦜");
-        symbolComboBox2.addItem("🦢");
-        symbolComboBox2.addItem("🦚");
-        symbolComboBox2.addItem("🦥");
+        symbolComboBox2.addItem("♘");
+        symbolComboBox2.addItem("♞");
+        symbolComboBox2.addItem("☀");
+        symbolComboBox2.addItem("☁");
+        symbolComboBox2.addItem("☂");
+        symbolComboBox2.addItem("☃");
+        symbolComboBox2.addItem("★");
+        symbolComboBox2.addItem("☆");
+        symbolComboBox2.addItem("☺");
+        symbolComboBox2.addItem("☻");
+        symbolComboBox2.addItem("☹");
+        symbolComboBox2.addItem("♕");
+        symbolComboBox2.addItem("♔");
+        symbolComboBox2.addItem("♥");
+
+        //symbolComboBox2.setFont(new java.awt.Font("Arial", java.awt.Font.PLAIN, 15));
 
         // Entry field to allow the user to enter the character icon 
         JComboBox<String> symbolComboBox3 = new JComboBox<>();
-        symbolComboBox3.addItem("🐎");
-        symbolComboBox3.addItem("🐴");
-        symbolComboBox3.addItem("🦄");
-        symbolComboBox3.addItem("🐇");
-        symbolComboBox3.addItem("🐢");
-        symbolComboBox3.addItem("🐘");
-        symbolComboBox3.addItem("🐒");
-        symbolComboBox3.addItem("🐼");
-        symbolComboBox3.addItem("🐧");
-        symbolComboBox3.addItem("🐬");
-        symbolComboBox3.addItem("🦜");
-        symbolComboBox3.addItem("🦢");
-        symbolComboBox3.addItem("🦚");
-        symbolComboBox3.addItem("🦥");
+        symbolComboBox3.addItem("♘");
+        symbolComboBox3.addItem("♞");
+        symbolComboBox3.addItem("☀");
+        symbolComboBox3.addItem("☁");
+        symbolComboBox3.addItem("☂");
+        symbolComboBox3.addItem("☃");
+        symbolComboBox3.addItem("★");
+        symbolComboBox3.addItem("☆");
+        symbolComboBox3.addItem("☺");
+        symbolComboBox3.addItem("☻");
+        symbolComboBox3.addItem("☹");
+        symbolComboBox3.addItem("♕");
+        symbolComboBox3.addItem("♔");
+        symbolComboBox3.addItem("♥");
+
+        //symbolComboBox3.setFont(new java.awt.Font("Arial", java.awt.Font.PLAIN, 15));
         
         JPanel horsesPanel = new JPanel(new GridLayout(9,2));
         horsesPanel.setBackground(new Color(54, 135, 73));
@@ -909,18 +915,10 @@ public class Race
             {
                textArea.append(String.valueOf(theHorse.getSymbol()));
             }
-            
-            if(theHorse.hasFallen())
-            {
-                //print the spaces after the horse
-                multiplePrint(' ',spacesAfter-1, textArea);
-            }
-            else
-            {
+
             //print the spaces after the horse
             multiplePrint(' ',spacesAfter, textArea);
-            }
-        
+
             //print the | for the end of the track
             textArea.append("|");
 
