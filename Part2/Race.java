@@ -170,8 +170,10 @@ public class Race
 
     public void editRaceWindow(JFrame mainFrame, JButton startRaceButton)
     {
+        // Hides the main menu window
         mainFrame.setVisible(false);
 
+        // Opens a new frame for the 'Edit Race' window
         JFrame editRaceFrame = new JFrame();
         editRaceFrame.setTitle("Edit Race");
         editRaceFrame.setSize(750, 500);
@@ -180,6 +182,7 @@ public class Race
         editRaceFrame.getContentPane().setBackground(new Color(54, 135, 73));
         editRaceFrame.setResizable(false);
 
+        // Main menu bar for the 'Edit Race' window
         JMenuBar mainMenuBar = new JMenuBar();
         JMenu menu = new JMenu("Menu");
         mainMenuBar.add(menu);
@@ -198,6 +201,7 @@ public class Race
         JPanel editPanel = new JPanel(new FlowLayout());
         editPanel.setBackground(new Color(54, 135, 73)); 
 
+        // Allows the user to enter the track length 
         JTextField raceLenLabel = new JTextField("Enter the track length (m):",15);
         raceLenLabel.setBackground(Color.WHITE);
         raceLenLabel.setForeground(new Color(35, 158, 152));
@@ -213,24 +217,30 @@ public class Race
         raceLenEntry.setVisible(true);
         raceLenEntry.setHorizontalAlignment(JTextField.CENTER);
 
+        // Buttons
+
+        // Allows the user to submit the track length that they have entered
         JButton submitButton = new JButton("Submit");
         submitButton.setFont(new Font("Arial", Font.BOLD, 13));
         submitButton.setBackground(new Color(35, 158, 152));
         submitButton.setForeground(Color.WHITE);
         submitButton.setVisible(true);
 
+        // Allows the user to add the first horse to the race, with the name and character that they have entered
         JButton addHorse1Button = new JButton("Add Horse 1");
         addHorse1Button.setFont(new Font("Arial", Font.BOLD, 13));
         addHorse1Button.setBackground(new Color(35, 158, 152));
         addHorse1Button.setForeground(Color.WHITE);
         addHorse1Button.setVisible(true);
 
+        // Allows the user to add the second horse to the race, with the name and character that they have entered
         JButton addHorse2Button = new JButton("Add Horse 2");
         addHorse2Button.setFont(new Font("Arial", Font.BOLD, 13));
         addHorse2Button.setBackground(new Color(35, 158, 152));
         addHorse2Button.setForeground(Color.WHITE);
         addHorse2Button.setVisible(true);
 
+        // Allows the user to add the third horse to the race, with the name and character that they have entered
         JButton addHorse3Button = new JButton("Add Horse 3");
         addHorse3Button.setFont(new Font("Arial", Font.BOLD, 13));
         addHorse3Button.setBackground(new Color(35, 158, 152));
@@ -243,8 +253,10 @@ public class Race
             public void actionPerformed(ActionEvent e)
             {
                 String input = raceLenEntry.getText();
+                // Try catch block used to check whther the input for the race length is a valid integer
                 try {
                     int number = Integer.parseInt(input);
+                    // Check if the input is a valid integer greater than 5 and less than 75
                     if(number <= 5 || number > 75)
                     {
                         JOptionPane.showMessageDialog(null, "Invalid input. Please enter a valid integer greater than 5 and less than 75.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -252,6 +264,8 @@ public class Race
                     }
                     else
                     {
+                        // Once the race length has been successfully entered by the user, the race can be started by clicking
+                        // the start race button
                         raceLength = number;
                         JOptionPane.showMessageDialog(null, "Track length set to " + raceLength + " meters.", "Success", JOptionPane.INFORMATION_MESSAGE);
                         JOptionPane.showMessageDialog(null, "Start button enabled. You can now start the race from the main menu.", "Success", JOptionPane.INFORMATION_MESSAGE);
@@ -277,6 +291,7 @@ public class Race
         horse1NameLabel.setEditable(false);
         horse1NameLabel.setHorizontalAlignment(JTextField.CENTER);
 
+        // Entry field to allow the user to enter the name of the first horse
         JTextField horse1NameEntry = new JTextField(10);
         horse1NameEntry.setBackground(Color.WHITE);
         horse1NameEntry.setForeground(Color.BLACK);
@@ -292,6 +307,7 @@ public class Race
         horse1CharLabel.setEditable(false);
         horse1CharLabel.setHorizontalAlignment(JTextField.CENTER);
 
+        // Entry field to allow the user to enter the character icon of the first horse
         JTextField horse1CharEntry = new JTextField(10);
         horse1CharEntry.setBackground(Color.WHITE);
         horse1CharEntry.setForeground(Color.BLACK);
@@ -307,6 +323,7 @@ public class Race
         horse2NameLabel.setEditable(false);
         horse2NameLabel.setHorizontalAlignment(JTextField.CENTER);
 
+        // Entry field to allow the user to enter the name of the second horse
         JTextField horse2NameEntry = new JTextField(10);
         horse2NameEntry.setBackground(Color.WHITE);
         horse2NameEntry.setForeground(Color.BLACK);
@@ -322,6 +339,7 @@ public class Race
         horse2CharLabel.setEditable(false);
         horse2CharLabel.setHorizontalAlignment(JTextField.CENTER);
 
+        // Entry field to allow the user to enter the character icon of the second horse
         JTextField horse2CharEntry = new JTextField(10);
         horse2CharEntry.setBackground(Color.WHITE);
         horse2CharEntry.setForeground(Color.BLACK);
@@ -337,6 +355,7 @@ public class Race
         horse3NameLabel.setEditable(false);
         horse3NameLabel.setHorizontalAlignment(JTextField.CENTER);
 
+        // Entry field to allow the user to enter the name of the third horse
         JTextField horse3NameEntry = new JTextField(10);
         horse3NameEntry.setBackground(Color.WHITE);
         horse3NameEntry.setForeground(Color.BLACK);
@@ -352,6 +371,7 @@ public class Race
         horse3CharLabel.setEditable(false);
         horse3CharLabel.setHorizontalAlignment(JTextField.CENTER);
 
+        // Entry field to allow the user to enter the character icon of the third horse
         JTextField horse3CharEntry = new JTextField(10);
         horse3CharEntry.setBackground(Color.WHITE);
         horse3CharEntry.setForeground(Color.BLACK);
@@ -392,6 +412,7 @@ public class Race
         horsesPanel.setVisible(true);
         editRaceFrame.setVisible(true);
 
+        // Used to add horse1 to the race
         addHorse1Button.addActionListener(new ActionListener() 
         {
             @Override
@@ -400,6 +421,7 @@ public class Race
                 String horse1Name = horse1NameEntry.getText();
                 String horse1Char = horse1CharEntry.getText();
 
+                // Checks if the entry fields are empty
                 if(horse1Name.equals("") || horse1Char.equals(""))
                 {
                     JOptionPane.showMessageDialog(null, "Please enter a name and a character for Horse 1.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -414,16 +436,19 @@ public class Race
                     horse1NameEntry.setText("");
                     horse1CharEntry.setText("");
                 }
-                else if(horse1Name.length() > 25)
+                // Checks the length of the horse name is greater than 15 characters
+                else if(horse1Name.length() > 15)
                 {
-                    JOptionPane.showMessageDialog(null, "Please enter a name with less than 25 characters for Horse 1.", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Please enter a name with less than 15 characters for Horse 1.", "Error", JOptionPane.ERROR_MESSAGE);
                     horse1NameEntry.setText("");
                     horse1CharEntry.setText("");
                 }
                 else
                 {
+                    // Generates a random number (between 0.1 and 0.9 inclusive) for the horses confidence
                     double randomNum = generateRandomNumber();
                     Horse horse1 = new Horse(horse1Char.charAt(0),horse1Name,randomNum);
+                    // Adds the horse to the first lane
                     addHorse(horse1,1);
                     JOptionPane.showMessageDialog(null, "Horse 1 added successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
                     horse1NameEntry.setText("");
@@ -432,6 +457,7 @@ public class Race
             }
         });
 
+        // Used to add horse2 to the race
         addHorse2Button.addActionListener(new ActionListener() 
         {
             @Override
@@ -440,6 +466,7 @@ public class Race
                 String horse2Name = horse2NameEntry.getText();
                 String horse2Char = horse2CharEntry.getText();
 
+                // Checks if the entry fields are empty
                 if(horse2Name.equals("") || horse2Char.equals(""))
                 {
                     JOptionPane.showMessageDialog(null, "Please enter a name and a character for Horse 2.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -454,16 +481,19 @@ public class Race
                     horse2NameEntry.setText("");
                     horse2CharEntry.setText("");
                 }
-                else if(horse2Name.length() > 25)
+                // Checks the length of the horse name is greater than 15 characters
+                else if(horse2Name.length() > 15)
                 {
-                    JOptionPane.showMessageDialog(null, "Please enter a name with less than 25 characters for Horse 2.", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Please enter a name with less than 15 characters for Horse 2.", "Error", JOptionPane.ERROR_MESSAGE);
                     horse2NameEntry.setText("");
                     horse2CharEntry.setText("");
                 }
                 else
                 {
+                    // Generates a random number (between 0.1 and 0.9 inclusive) for the horses confidence
                     double randomNum = generateRandomNumber();
                     Horse horse2 = new Horse(horse2Char.charAt(0),horse2Name,randomNum);
+                    // Adds the horse to the second lane
                     addHorse(horse2,2);
                     JOptionPane.showMessageDialog(null, "Horse 2 added successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
                     horse2NameEntry.setText("");
@@ -472,6 +502,7 @@ public class Race
             }
         });
 
+        // Used to add horse3 to the race
         addHorse3Button.addActionListener(new ActionListener() 
         {
             @Override
@@ -480,6 +511,7 @@ public class Race
                 String horse3Name = horse3NameEntry.getText();
                 String horse3Char = horse3CharEntry.getText();
 
+                // Checks if the entry fields are empty
                 if(horse3Name.equals("") || horse3Char.equals(""))
                 {
                     JOptionPane.showMessageDialog(null, "Please enter a name and a character for Horse 3.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -494,16 +526,19 @@ public class Race
                     horse3NameEntry.setText("");
                     horse3CharEntry.setText("");
                 }
-                else if(horse3Name.length() > 25)
+                // Checks the length of the horse name is greater than 15 characters
+                else if(horse3Name.length() > 15)
                 {
-                    JOptionPane.showMessageDialog(null, "Please enter a name with less than 25 characters for Horse 3.", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Please enter a name with less than 15 characters for Horse 3.", "Error", JOptionPane.ERROR_MESSAGE);
                     horse3NameEntry.setText("");
                     horse3CharEntry.setText("");
                 }
                 else
                 {
+                    // Generates a random number (between 0.1 and 0.9 inclusive) for the horses confidence
                     double randomNum = generateRandomNumber();
                     Horse horse3 = new Horse(horse3Char.charAt(0),horse3Name,randomNum);
+                    // Adds the horse to the third lane
                     addHorse(horse3,3);
                     JOptionPane.showMessageDialog(null, "Horse 3 added successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
                     horse3NameEntry.setText("");
