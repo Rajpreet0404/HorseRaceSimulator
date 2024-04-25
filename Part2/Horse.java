@@ -13,6 +13,8 @@ public class Horse
     private double horseConfidence;
     private int distanceTravelled;
     private boolean hasFallen;
+    private int racesWon;
+    private int totalRaces;
     
     /**
      * Constructor for objects of class Horse
@@ -23,6 +25,28 @@ public class Horse
         this.horseName = horseName;
         this.horseConfidence = horseConfidence;
     }
+
+    public int getRacesWon()
+    {
+        return this.racesWon;
+    }
+
+    public void setRacesWon(int racesWon)
+    {
+        this.racesWon = racesWon;
+        return;
+    }
+
+    public int getTotalRaces()
+    {
+        return this.totalRaces;
+    }   
+
+    public void setTotalRaces(int total)
+    {
+        this.totalRaces = total;
+        return;
+    }   
     
     //Other methods of class Horse
     public void fall()
