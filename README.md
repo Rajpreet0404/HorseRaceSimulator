@@ -10,25 +10,25 @@ The project is divided into two parts:
 
 ### Part 1 
 1. Clone the repository:
-git clone https://github.com/Rajpreet0404/HorseRaceSimulator
+- git clone https://github.com/Rajpreet0404/HorseRaceSimulator
 
 3. Navigate to the Part1 directory:
-cd Part1
+- cd Part1
 
 5. Compile and run the Java code:
-javac Horse.java Race.java
-java Race
+- javac Horse.java Race.java
+- java Race
 
 ### Part 2
 1. Clone the repository:
-git clone https://github.com/Rajpreet0404/HorseRaceSimulator
+- git clone https://github.com/Rajpreet0404/HorseRaceSimulator
 
 3. Navigate to the Part1 directory:
-cd Part2
+- cd Part2
 
 5. Compile and run the Java code:
-javac Horse.java Race.java
-java Race
+- javac Horse.java Race.java
+- java Race
 
 ## Dependencies
 
