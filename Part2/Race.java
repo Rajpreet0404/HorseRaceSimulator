@@ -562,7 +562,7 @@ public class Race
         
         statsFrame.setSize(750, 500);
         statsFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        statsFrame.setLayout(new FlowLayout());
+        statsFrame.setLayout(new GridLayout(4,1));
         statsFrame.getContentPane().setBackground(new Color(54, 135, 73));
         statsFrame.setResizable(false);
 
@@ -591,8 +591,11 @@ public class Race
         });
         statsMenu.add(statsItem);
 
+        JPanel choicePanel = new JPanel(new FlowLayout());
+        choicePanel.setBackground(new Color(54, 135, 73)); 
+
         // Allows the user to enter the track length 
-        JTextField chooseHorseLabel = new JTextField("Choose a horse to view its statistics:",25);
+        JTextField chooseHorseLabel = new JTextField("Choose a horse to view its statistics:",23);
         chooseHorseLabel.setBackground(Color.WHITE);
         chooseHorseLabel.setForeground(new Color(35, 158, 152));
         chooseHorseLabel.setFont(new Font("Arial", Font.BOLD, 17));
@@ -617,10 +620,30 @@ public class Race
 
         // Allows the user to submit the track length that they have entered
         JButton submitButton = new JButton("Submit");
-        submitButton.setFont(new Font("Arial", Font.BOLD, 13));
+        submitButton.setFont(new Font("Arial", Font.BOLD, 15));
         submitButton.setBackground(new Color(35, 158, 152));
         submitButton.setForeground(Color.WHITE);
         submitButton.setVisible(true);
+
+        JPanel chosenHorseStatsPanel = new JPanel(new GridLayout(1,2));
+        chosenHorseStatsPanel.setBackground(new Color(54, 135, 73)); 
+        chosenHorseStatsPanel.setVisible(false);
+
+        JLabel horseIcon = new JLabel();
+        horseIcon.setFont(new Font("monospaced", Font.PLAIN, 50));
+        horseIcon.setBackground(new Color(35, 158, 152));
+        horseIcon.setForeground(Color.WHITE);
+        horseIcon.setHorizontalAlignment(JTextField.CENTER);
+        chosenHorseStatsPanel.setVisible(true);
+
+         // Create a text area to display the race
+        JTextArea horseStatsArea = new JTextArea();
+        horseStatsArea.setFont(new Font("monospaced", Font.PLAIN, 20));
+        //horseIcon.setRows(5);
+        horseStatsArea.setBackground(new Color(54, 135, 73)); 
+        horseStatsArea.setForeground(Color.WHITE);
+        horseStatsArea.setEditable(false);
+        horseStatsArea.setVisible(true);
 
         submitButton.addActionListener(new ActionListener() 
         {
@@ -635,15 +658,60 @@ public class Race
                 }
                 else
                 {
+                    Horse selectedHorse = null;
+                    if (lane1Horse != null && lane1Horse.getName().equals(input)) 
+                    {
+                        selectedHorse = lane1Horse;
+                    } 
+                    else if (lane2Horse != null && lane2Horse.getName().equals(input)) 
+                    {
+                        selectedHorse = lane2Horse;
+                    } 
+                    else if (lane3Horse != null && lane3Horse.getName().equals(input)) 
+                    {
+                        selectedHorse = lane3Horse;
+                    }
+
+                    if (selectedHorse != null) 
+                    {
+                        // Get the horse symbol and set it as the text of horseIcon
+                        horseIcon.setText(String.valueOf(selectedHorse.getSymbol()));
+
+                        double ratio = selectedHorse.getRacesWon() / selectedHorse.getTotalRaces();
+                        double odds = Math.round(ratio * 10) / 10.0;
+
+                        horseStatsArea.setText("Name: " + selectedHorse.getName());
+                        horseStatsArea.append("\n");
+                        horseStatsArea.append("Win ratio - " + selectedHorse.getRacesWon() + " : " + selectedHorse.getTotalRaces());
+                        horseStatsArea.append("\n");
+                        horseStatsArea.append("Odds: " + odds +"% chance of winning");
+
+                        chosenHorseStatsPanel.add(horseIcon);
+                        chosenHorseStatsPanel.add(horseStatsArea);
+                        chosenHorseStatsPanel.setVisible(true);
+                        
+                        // Revalidate and repaint the panel to ensure it's updated
+                        chosenHorseStatsPanel.revalidate();
+                        chosenHorseStatsPanel.repaint();
+                    } 
+                    else 
+                    {
+                        JOptionPane.showMessageDialog(null, "Horse not found.", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
                 }
             }
         });
 
         statsFrame.setJMenuBar(mainMenuBar);
 
-        statsFrame.add(chooseHorseLabel);
-        statsFrame.add(horseNames);
-        statsFrame.add(submitButton);
+        choicePanel.add(chooseHorseLabel);
+        choicePanel.add(horseNames);
+        choicePanel.add(submitButton);
+
+        //chosenHorseStatsPanel.add(horseIcon);
+
+        statsFrame.add(choicePanel);
+        statsFrame.add(chosenHorseStatsPanel);
         statsFrame.setVisible(true);
         
     }
@@ -703,7 +771,7 @@ public class Race
         // Create a new frame for the race to be displayed
         JFrame raceFrame = new JFrame();
         raceFrame.setTitle("Race");
-        raceFrame.setSize(900, 250);
+        raceFrame.setSize(1500, 250);
         raceFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         raceFrame.setLayout(new FlowLayout());
         raceFrame.getContentPane().setBackground(new Color(54, 135, 73));
